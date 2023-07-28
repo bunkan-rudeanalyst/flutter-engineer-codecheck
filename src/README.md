@@ -1,16 +1,25 @@
-# src
+# 練習用Flutterアプリ
 
-A new Flutter project.
+本プログラムはGitHub APIを用いてリポジトリを検索するアプリ。
+主な特徴は以下。
 
-## Getting Started
+## 機能
+* リポジトリをキーワード検索できる
+* 以下のリポジトリの情報を閲覧できる
+  * リポジトリ名
+  * オーナーアイコン
+  * プロジェクト言語
+  * Star 数
+  * Watcher 数
+  * Fork 数
+  * Issue 数
+* MaterialデザインでUIを構成
 
-This project is a starting point for a Flutter application.
+## 開発環境
 
-A few resources to get you started if this is your first Flutter project:
+* Flutter: 3.10.6(latest @7/28)
+* Dart: 3.0.6
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 備考
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+本プログラムは練習用です。特に採用応募などは現状検討しておりません。
