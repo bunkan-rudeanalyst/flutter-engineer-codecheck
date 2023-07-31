@@ -46,27 +46,36 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("GitHub Repo Search App"),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Column(
-          children: [
-            TextField(
-              textAlignVertical: TextAlignVertical.center,
-              controller: _controller,
-              textInputAction: TextInputAction.search,
-              onEditingComplete: _onEditingComplete,
-              decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.search), border: OutlineInputBorder()),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            const Expanded(child: RepoList())
-          ],
+    return GestureDetector(
+      onTap: () {
+        // キーボード外タップにてキーボードを閉じる
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("GitHub Repo Search App"),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Column(
+            children: [
+              // リポジトリ検索キーワード入力用フォーム
+              TextField(
+                textAlignVertical: TextAlignVertical.center,
+                controller: _controller,
+                textInputAction: TextInputAction.search,
+                onEditingComplete: _onEditingComplete,
+                decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder()),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              // リポジトリ一覧
+              const Expanded(child: RepoList())
+            ],
+          ),
         ),
       ),
     );

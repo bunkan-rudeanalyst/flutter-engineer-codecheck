@@ -7,23 +7,26 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:src/app.dart';
+import 'package:provider/provider.dart';
+
+import 'package:src/provider/provider.dart';
+import 'package:src/view/page/page.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const App());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  group('ui test', () {
+    testWidgets('keyboard close test', (WidgetTester tester) async {
+      await tester.pumpWidget(MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (_) => RepositoryProvider()),
+          ],
+          builder: (context, _) {
+            return const MaterialApp(home: HomePage());
+          }));
+      await tester.tap(find.byType(TextField));
+      await tester.tap(find.byType(Scaffold));
+      final BuildContext context = tester
+          .element(find.byWidgetPredicate((widget) => widget is Scaffold));
+      expect(MediaQuery.of(context).viewInsets.bottom, 0);
+    });
   });
 }
