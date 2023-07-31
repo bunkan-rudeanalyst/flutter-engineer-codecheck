@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class MockServer {
   static const jsonString = '''{
     "total_count": 40,
@@ -113,9 +111,9 @@ class MockServer {
   }''';
 
   /// キーワード検索
-  static Future<Map<String, dynamic>> searchByKeyword(String keyword) async {
-    await Future.delayed(Duration(milliseconds: 300));
-    final result = jsonDecode(jsonString);
-    return result;
+  static Future<String> searchByKeyword(String keyword) async {
+    await Future.delayed(const Duration(milliseconds: 300));
+
+    return jsonString;
   }
 }
