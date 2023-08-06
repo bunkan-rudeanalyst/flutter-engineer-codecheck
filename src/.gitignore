@@ -32,7 +32,6 @@ api-keys.json
 .pub-cache/
 .pub/
 /build/
-.vscode/
 api-keys.json
 
 # Symbolication related
