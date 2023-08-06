@@ -39,8 +39,3 @@ flutter run --dart-define-from-file=api-keys.json
 ## 備考
 
 本プログラムは練習用です。特に採用応募などは現状検討しておりません。
-
-gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" "https://api.github.com/search/repositories?q=Flutter&per_page=2?page=2"
-
-curl -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer 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" -H "X-GitHub-Api-Version: 2022-11-28" "https://api.github.com/search/repositories?q=flutter&per_page=10?page=10000000000000000"
-# 

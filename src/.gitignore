@@ -33,6 +33,7 @@ api-keys.json
 .pub/
 /build/
 .vscode/
+api-keys.json
 
 # Symbolication related
 app.*.symbols
