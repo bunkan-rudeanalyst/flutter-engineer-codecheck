@@ -103,6 +103,8 @@ class RepositoryProvider extends ChangeNotifier {
     currentKeyword = keyword;
     // ページ番号を初期化
     currentPage = 1;
+    // リポジトリ一覧を初期化
+    repositories.clear();
 
     // Form入力のキーワード検索なので、pageは1で固定
     final searchedItems =
@@ -121,11 +123,15 @@ class RepositoryProvider extends ChangeNotifier {
 
     // ページをインクリメント
     currentPage++;
+    if ((currentPage - 1) * 10 >= totalCount) {
+      status = RepoListStatus.repositoriesFound;
+      notifyListeners();
+    } else {
+      final loadedItems =
+          await fetchRepositories(keyword: currentKeyword, page: currentPage);
 
-    final loadedItems =
-        await fetchRepositories(keyword: currentKeyword, page: currentPage);
-
-    await updateRepositories(loadedItems);
+      await updateRepositories(loadedItems);
+    }
   }
 
   /// GitHub API search method
